@@ -19,7 +19,8 @@ const alertError = () => {
 }
 
 const insertMessage = (name, content) => {
-    const message = $(`<li>${name}: ${content}</li>`)
+    const message = $('li').text(`${name}: ${content}`);
+    // const message = $(`<li>${name}: ${content}</li>`) //这个代码会有安全问题，可以xss注入
     ul.append(message);
 }
 
