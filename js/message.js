@@ -3,13 +3,12 @@ const appKey = 'zhSYVp2EEIq870asMGHvc9n4';
 AV.init({ appId, appKey });
 
 const MessageObject = AV.Object.extend('message');
-const messageObject = new MessageObject();
-
 const ul = $('#message-ul');
 
 
 const saveMessageToDBo = async(name, content) => {
-    await messageObject.save({
+    const messageObject = new MessageObject();
+    return messageObject.save({
         name: name,
         content: content,
     });
