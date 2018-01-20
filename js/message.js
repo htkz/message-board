@@ -1,5 +1,5 @@
-const appId = 't1JQsYcAlG6UnFnDQu7HG4OA-gzGzoHsz';
-const appKey = 'zhSYVp2EEIq870asMGHvc9n4';
+const appId = 'd9mAl0CxoTTHnMBt3MlGwc5g-gzGzoHsz';
+const appKey = 'oE0EF93E1qEAfrlUNYbPlnlP';
 AV.init({ appId, appKey });
 
 const MessageObject = AV.Object.extend('message');
@@ -19,13 +19,14 @@ const alertError = () => {
 }
 
 const insertMessage = (name, content) => {
-    const message = $('li').text(`${name}: ${content}`);
+    const message = $('<li></li>').text(`${name}: ${content}`);
     // const message = $(`<li>${name}: ${content}</li>`) //这个代码会有安全问题，可以xss注入
     ul.append(message);
 }
 
 const initMessage = () => {
     var query = new AV.Query('message');
+    console.log(query.find());
     query.find().then((messages) => {
         const array = messages.map((item) => item.attributes)
         array.forEach((item) => {
